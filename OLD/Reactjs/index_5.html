@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <div id="root"></div>
+    </body>
+    <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script> <!--React JS는 interactive하도록 만들어주는 library-->
+    <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script> <!--React-dom library 또는 package로 React element들을 HTML body에 둘수 있도록 해준다-->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script> <!--bable library-->
+    <script  type="text/babel">
+        const root = document.getElementById("root"); // element 생성
+        let counter = 0;
+        function countUp(){
+            counter = counter + 1;
+            reRender() // countUp을 호출할 떄마다 rendering을 해주도록 하였다. 이게 효율적일까? 아니다
+        }
+        function reRender() {
+            ReactDOM.render(<Container/>, root); // span을 <div id="root"></div>에 넣음 
+        }
+        const Container = () => (<div>
+            <h3>Hello I'm a title! clicked: {counter}</h3>
+            <button onClick = {countUp}>Click me</button>
+        </div>); // HTML 요소는 소문자로, JSX 구문으로 생성한 요소는 대문자로 시작해야한다
+        reRender()
+    </script>
+</html>
