@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <div id="root"></div>
+    </body>
+    <script src="https://unpkg.com/react@17.0.2/umd/react.development.js"></script> <!--React JS는 interactive하도록 만들어주는 library-->
+    <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.development.js"></script> <!--React-dom library 또는 package로 React element들을 HTML body에 둘수 있도록 해준다-->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script> <!--bable library-->
+    <script src="https://unpkg.com/prop-types@15.7.2/prop-types.js"></script>
+    <script  type="text/babel">
+        function Btn({text,fontSize = 14}) {
+            console.log(text); //object타입으로 { banana: "Continue" }와 같이 전달된다
+            return (
+                <button
+                    style={{
+                        backgroundColor: "tomato",
+                        color: "white",
+                        padding: "10px 20px",
+                        border:0,
+                        borderRadius: 10,
+                        fontSize
+                    }}>
+                {text}
+                </button>
+            );
+        }
+        Btn.propTypes = {
+            text:PropTypes.string.isRequried,
+            fontSize:PropTypes.number,
+        };
+        const MemorizedBtn = React.memo(Btn); //memorized 버튼 컴포넌트
+        function App(){
+            const [value,setValue] = React.useState("Save Changes");
+            const changeValue = () => setValue("Revert Canges");
+            return(
+                <div>
+                    {/*onClick을 직접 만든 컴포넌트에 할당시 이벤트 리스너로 처리되지 않는다.*/}
+                    <MemorizedBtn text={value} />
+                    <MemorizedBtn text="Continue" fontSize={12}/>
+                </div>
+            )
+        }
+        ReactDOM.render(<App/>, root); 
+    </script>
+</html>

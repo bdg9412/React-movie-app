@@ -33,7 +33,7 @@
 
             const reset = () => setMinutes(0);
             const onFlip = () => setFlipped(
-                (current)=>!current,
+                (flipped)=>!flipped,
                 // console.log(minuets) // flipped가 true일 경우 minuets을 그렇지 않다면 변환한 minuets 값을 가진다.
                 );
 
@@ -48,12 +48,18 @@
                             placeolder="Minutes" 
                             type="number"
                             onChange={onChange} // 값을 업데이트 하기 위한 이벤트 리스너 등록
-                            disabled={flipped === false}
+                            disabled={flipped}
                         />
                     </div>
                     <div>
                         <label htmlFor="hours">Hours</label>
-                        <input value={!flipped ? minuets : Math.round(minuets/60)}id="hours" placeolder="Hours" type="number" disabled={flipped === true}/>
+                        <input 
+                        value={!flipped ? minuets : Math.round(minuets/60)} 
+                        id="hours" 
+                        placeolder="Hours" 
+                        type="number" 
+                        disabled={!flipped}
+                        onChange={onChange}/>
                     </div>
                     <button onClick={reset}>Reset</button>
                     <button onClick={onFlip}>Flip</button>

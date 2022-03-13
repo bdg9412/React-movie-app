@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <div id="root"></div>
+    </body>
+    <script src="https://unpkg.com/react@17.0.2/umd/react.development.js"></script> <!--React JS는 interactive하도록 만들어주는 library-->
+    <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.development.js"></script> <!--React-dom library 또는 package로 React element들을 HTML body에 둘수 있도록 해준다-->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script> <!--bable library-->
+    <script  type="text/babel">
+        function Btn(props) {
+            console.log(props); //object타입으로 { banana: "Continue" },{ big: true}와 같이 전달된다
+            const big = props.big;
+            return <button
+                style={{
+                    backgroundColor: "tomato",
+                    color: "white",
+                    padding: "10px 20px",
+                    border:0,
+                    borderRadius: 10,
+                    fontsize: big ? 18 : 1
+                }}
+            >
+            {props.banana}
+            </button>;
+        }
+        
+        function App(){
+            return(
+                <div>
+                    <Btn banana="Save Canges" big={true}/>
+                    <Btn banana="Continue" big={false}/>
+                </div>
+            )
+        }
+        ReactDOM.render(<App/>, root); 
+    </script>
+</html>
