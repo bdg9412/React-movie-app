@@ -9,5 +9,5 @@ Using React js for build movie app based nomadcoder react class
 4. ML/DL
 
 ## Function
-1. Web page - Show movie List, Show movie detail....
+1. Web page - Show movie List, Show movie detail....  --> React-movie-app/react-movie-app/
 2. Recommend movie based user choice
