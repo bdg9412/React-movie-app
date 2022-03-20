@@ -1,27 +1,17 @@
-import Button from "./Button";
-import styles from "./App.module.css"
-import { useState , useEffect} from "react";
-
-function Hello(){
-  useEffect(function(){
-    console.log("hi");
-    return function(){
-      console.log("bye :(");
-    }
-  })
-  return <h1>Hello</h1>
-}
+import {BrowserRouter as Router, Routes,Route} from "react-router-dom";
+import Detail from "./routes/Detail";
+import Home from "./routes/Home";
 
 function App() {
-  const [showing, setShowing] = useState(false)
-  const onClick = () => setShowing(
-    (prev) => !prev
-  )
-  return (
-    <div>
-      {showing ? <Hello /> : null}
-      <button onClick={onClick}>{showing ? "Hide":"show"}</button>
-    </div>
+  return(
+    <Router>
+      <Routes>
+        <Route path = "/about-us"
+          element={<h1>Hello</h1>}/>
+        <Route path = "/Movie/:id" element={<Detail/>}/>
+        <Route path = "/"  element={<Home/>}/> {/*URL 주소가 '/' 일때 Home 컴포넌트 접근*/}
+      </Routes>
+    </Router>
   );
 }
 
