@@ -1,5 +1,5 @@
 # React-movie-app  
-## Using React js for build movie app based nomadcoder react class  
+Using React js for build movie app based nomadcoder react class  
 
 # This is movie recommend web
 ## Software Used
