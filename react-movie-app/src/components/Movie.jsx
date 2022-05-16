@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import styles from "./Movie.module.css";
 
-// Movie 함수는 propery를 부모 컴포넌트로 부터 받아온다
+// Movie 함수는 property를 부모 컴포넌트로 부터 받아온다
 function Movie({coverImg,title,summary,genres,id}) {
     return(
         <div className={styles.movie}>
